@@ -46,6 +46,7 @@ namespace ProjetoFinal1B
             jogador.Sexo = sexo;
             listBox1.Items.Add(jogador.Nome);
             lista.Add(jogador);
+            textBox1.Text = "";
         }
     }
 }

@@ -52,6 +52,12 @@
     <Compile Include="Cadastro.Designer.cs">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Detalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Detalhes.Designer.cs">
+      <DependentUpon>Detalhes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </Compile>
     <EmbeddedResource Include="Cadastro.resx">
       <DependentUpon>Cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Detalhes.resx">
+      <DependentUpon>Detalhes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doacao.resx">
       <DependentUpon>Doacao.cs</DependentUpon>

@@ -14,7 +14,7 @@ namespace ProjetoFinal1B
     {
         List<Jogador> listaRanking = null;
         internal List<Jogador> ListaRanking { get => listaRanking; set => listaRanking = value; }
-        List<int> aux = new List<int>();
+        List<Jogador> rankingOrdenado = new List<Jogador>();
         public frmRanking()
         {
             InitializeComponent();
@@ -27,47 +27,50 @@ namespace ProjetoFinal1B
 
         private void frmRanking_Load(object sender, EventArgs e)
         {
-            foreach (Jogador jogador in listaRanking)
+            
+            if (listaRanking.Count() == 1) 
             {
-                aux.Add(jogador.Pontos);
-            }
-            aux.Sort();
-
-            int i = 0;
-            foreach (Jogador item in listaRanking)
-            {
-                if (item.Pontos >= aux[i])
-                {
-                    lblNome1.Text = item.Nome;
-                    lblPontos1.Text = item.Pontos.ToString();
-                }
-                else
-                    i++;
+                lblNome1.Text = listaRanking.ElementAt(0).Nome;
+                lblPontos1.Text = listaRanking.ElementAt(0).Pontos.ToString();
             }
 
-            int j = i++;
-            foreach (Jogador item in listaRanking)
+            if (listaRanking.Count() == 2)
             {
-                if (item.Pontos >= aux[j] )
-                {
-                    lblNome2.Text = item.Nome;
-                    lblPontos2.Text = item.Pontos.ToString();
-                }
-                else
-                    j++;
+                lblNome1.Text = listaRanking.ElementAt(0).Nome;
+                lblPontos1.Text = listaRanking.ElementAt(0).Pontos.ToString();
+
+                lblNome2.Text = listaRanking.ElementAt(1).Nome;
+                lblPontos2.Text = listaRanking.ElementAt(1).Pontos.ToString();
+
             }
 
-            int k = j++;
-            foreach (Jogador item in listaRanking)
+            if (listaRanking.Count( )== 3)
             {
-                if (item.Pontos >= aux[k])
-                {
-                    lblNome3.Text = item.Nome;
-                    lblPontos3.Text = item.Pontos.ToString();
-                }
-                else
-                    k++;
+                listaRanking.Sort((j1, j2) => j1.Pontos.CompareTo(j2.Pontos));
+                listaRanking.Reverse();
+
+                lblNome1.Text = listaRanking.ElementAt(0).Nome;
+                lblPontos1.Text = listaRanking.ElementAt(0).Pontos.ToString();
+
+                lblNome2.Text = listaRanking.ElementAt(1).Nome;
+                lblPontos2.Text = listaRanking.ElementAt(1).Pontos.ToString();
+
+                lblNome3.Text = listaRanking.ElementAt(2).Nome;
+                lblPontos3.Text = listaRanking.ElementAt(2).Pontos.ToString();
             }
+
+        }
+
+        private void lblPontos1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmDetalhes detalhes = new frmDetalhes();
+            detalhes.ListaDetalhes = listaRanking;
+            detalhes.ShowDialog();
         }
     }
 }
